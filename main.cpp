@@ -25,9 +25,8 @@ int main (int argc, char* argv[]) {
     PyObject *py_profile;
     if (PyTools::extract_pyProfile("my_func", py_profile)) {
     
-        Profile my_py_profile(py_profile,1,"pippo");
+        Profile my_py_profile(py_profile);
 
-   
         std::cout<< "a=" << a << std::endl;
 
         for (int i=0; i<10; i++)
