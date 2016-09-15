@@ -22,18 +22,15 @@ int main (int argc, char* argv[]) {
     
     PyTools::extract("a", a);
     
-    PyObject *py_profile;
-    if (PyTools::extract_pyProfile("my_func", py_profile)) {
+    Profile my_py_profile("my_func");
     
-        Profile my_py_profile(py_profile);
-
-        std::cout<< "a=" << a << std::endl;
-
-        for (int i=0; i<10; i++)
-            std::cout<< "my_func("<<i<<")=" << my_py_profile.valueAt(std::vector<double>{(double)i}) << std::endl;
-
+    std::cout<< "a=" << a << std::endl;
+    
+    for (int i=0; i<10; i++) {
+        double retval=my_py_profile.valueAt(std::vector<double>{(double)i});
+        std::cout<< "my_func("<<i<<")=" << retval << std::endl;
     }
-
+    
     PyTools::closePython();
 
     return 0;

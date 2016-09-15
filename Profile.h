@@ -13,18 +13,7 @@ public:
     //! Default destructor
     virtual ~Function(){};
     // spatial
-    virtual double valueAt(std::vector<double>         ) {
-        return 0.;
-    };
-    // temporal
-    virtual double valueAt(double x                    ) {
-        // just in case someone uses 1D space profile instead of time
-        std::vector<double> v(1);
-        v[0] = x;
-        return valueAt(v);
-    };
-    // spatio-temporal
-    virtual double valueAt(std::vector<double>, double ) {
+    virtual double valueAt(std::vector<double>) {
         return 0.;
     };
 };
@@ -37,7 +26,7 @@ class Profile
 {
 public:
     //! Default constructor
-    Profile(PyObject*);
+    Profile(std::string name, std::string component=std::string(""), int nComponent=0);
     //! Default destructor
     ~Profile();
     
