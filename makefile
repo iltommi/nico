@@ -1,15 +1,15 @@
 BUILD_DIR ?= build
 
 CXX ?= g++-8
-
+PYCONFIG ?= python-config
 EXEC = main
 
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 
-CXXFLAGS += -std=c++11 $(shell python-config --includes)
-LDFLAGS += $(shell python-config --ldflags)
+CXXFLAGS += -std=c++11 $(shell $(PYCONFIG) --includes)
+LDFLAGS += $(shell $(PYCONFIG) --ldflags)
 
 default: run
 
