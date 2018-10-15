@@ -1,6 +1,4 @@
-BUILD_DIR ?= build
-
-CXX ?= g++-8
+CXX ?= g++
 PYCONFIG ?= python-config
 EXEC = main
 
