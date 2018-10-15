@@ -22,6 +22,7 @@
 #include <vector>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 
 #define ERROR(__txt) std::cout << "[ERROR] " << __FILE__ << ":" << __LINE__ << " (" << __FUNCTION__ << ") " << __txt << std::endl;
 
@@ -120,6 +121,22 @@ public:
         return version;
     }
     
+    static void execFile(std::string fname) {
+
+        if (!Py_IsInitialized()) ERROR("Python not initialized: this should not happen");
+
+		std::ifstream istr(fname);
+		if (!istr.is_open()) {
+			std::cerr << "Error need a file to parse" << std::endl;
+		} else {
+	
+			std::stringstream buffer;
+			buffer << istr.rdbuf() << "\n";
+		
+			PyRun_SimpleString(buffer.str().c_str());
+		}
+    }
+
     //! convert Python object to C++ value
     template <typename T>
     static bool convert(PyObject* py_val, T &val) {

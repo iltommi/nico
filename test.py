@@ -1,8 +1,8 @@
 import math
 
-a=math.pi
+my_pi=math.pi
 
 def my_func(x):
    return x*x
 
-print "here I am"
+print "Here I am in python"

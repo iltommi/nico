@@ -11,7 +11,7 @@ DEPS := $(SRCS:.cpp=.d)
 CXXFLAGS += -std=c++11 $(shell python-config --includes)
 LDFLAGS += $(shell python-config --ldflags)
 
-default: $(EXEC)
+default: run
 
 clean:
 	rm -rf $(DEPS) $(OBJS) $(EXEC)
@@ -27,6 +27,9 @@ clean:
 $(EXEC): $(OBJS)
 	@echo "Linking $@"
 	@$(CXX) $(OBJS) -o $@ $(LDFLAGS) 
+
+run: $(EXEC)
+	./main test.py
 
 -include $(DEPS)
 
