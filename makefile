@@ -1,6 +1,6 @@
 BUILD_DIR ?= build
 
-CXX ?= g++-6
+CXX ?= g++-8
 
 EXEC = main
 

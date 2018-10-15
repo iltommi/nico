@@ -11,7 +11,11 @@ int main (int argc, char* argv[]) {
     PyTools::openPython();
 
     std::ifstream istr(argv[1]);
-    if (!istr.is_open()) return -2;
+    if (!istr.is_open()) {
+	    std::cerr << "Error need a file to parse" << std::endl;
+    	return -2;
+    }
+    	
 
     std::stringstream buffer;
     buffer << istr.rdbuf() << "\n";
